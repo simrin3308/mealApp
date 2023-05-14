@@ -1,0 +1,37 @@
+
+
+.card {
+  cursor: pointer;
+  -webkit-box-shadow: 9px 6px 18px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 9px 6px 18px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 9px 6px 18px 0px rgba(0, 0, 0, 0.75);
+}
+.card:hover {
+  background-color: antiquewhite;
+  scale: 1.1;
+  transition: 0.5s all;
+}
+.hero {
+  background-image: url(/public/img1.jpg);
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 40px;
+}
+.hero-input {
+  margin: 10px 10px 0 0;
+  background: rgb(240, 231, 231);
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: black;
+  -webkit-box-shadow: 9px 6px 18px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 9px 6px 18px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 9px 6px 18px 0px rgba(0, 0, 0, 0.75);
+}
+.text-top {
+  font-size: 30px;
+}
