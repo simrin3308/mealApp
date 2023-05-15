@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchMeal, fetchMealById } from "./slice/slice";
 import Button from "react-bootstrap/Button";
@@ -17,53 +17,67 @@ const Recipe = () => {
   const clickHandler = () => {
     console.log("clicked");
   };
+  useEffect(() => {
+    dispatch(fetchMeal(dish));
+  }, [dispatch, dish]);
 
   return (
     <>
       <div className="hero">
-        <div class="container">
-          <div class="row">
-            <div class="col-6 col-md-8"></div>
-            <div class="col-6 col-md-4">
-              <div className="text-top">Search Recipe</div>
+        <div className="container">
+          <div className="row mx-auto">
+            <div className="col-6 col-md-8  d-sm-block"></div>
+            <div className="d-sm-block col-12 col-md-4">
+              <div className="text-top text-center">Search Recipe</div>
               <input
-                className="hero-input"
+                className="hero-input w-100"
                 type="text"
                 value={dish}
                 onChange={handleChange}
               />
-
-              <Button onClick={() => dispatch(fetchMeal(dish))}>Click</Button>
+              <br />
+              <Button
+                className="my-3 bg-danger w-100"
+                onClick={() => dispatch(fetchMeal(dish))}
+              >
+                Click
+              </Button>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="container">
-        <div class="row">
+      <div className="container">
+        <div className="row">
+          <div className="display-2 my-5">
+            <strong>
+              <u>Recipes</u>
+            </strong>
+          </div>
           {meal.meal.meal.meals &&
-            meal.meal.meal.meals.map((item) => {
+            meal.meal.meal.meals.map((item, index) => {
               return (
-                <>
-                  <div class="col-12 col-md-4 col-sm-12">
-                    <Card className="card m-3" style={{ width: "18rem" }}>
-                      <Card.Img
-                        className="bg-success img"
-                        variant="top"
-                        src={item.strMealThumb}
-                      />
-                      <Card.Body>
-                        <Card.Title>{item.strMeal}</Card.Title>
-                        <Card.Text>{item.strArea}</Card.Text>
-                        <Link to={`/${item.idMeal}`}>
-                          <Button onClick={clickHandler} variant="primary">
-                            Go somewhere
-                          </Button>
-                        </Link>
-                      </Card.Body>
-                    </Card>
-                  </div>
-                </>
+                <div
+                  key={index}
+                  className="col-12 col-lg-4 col-md-6 col-sm-12 d-flex justify-content-center align-items-center"
+                >
+                  <Card className="card m-3" style={{ width: "18rem" }}>
+                    <Card.Img
+                      className="bg-success img"
+                      variant="top"
+                      src={item.strMealThumb}
+                    />
+                    <Card.Body>
+                      <Card.Title>{item.strMeal}</Card.Title>
+                      <Card.Text>{item.strArea}</Card.Text>
+                      <Link to={`/${item.idMeal}`}>
+                        <Button onClick={clickHandler} variant="danger">
+                          More Detail
+                        </Button>
+                      </Link>
+                    </Card.Body>
+                  </Card>
+                </div>
               );
             })}
         </div>

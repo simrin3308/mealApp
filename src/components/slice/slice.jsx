@@ -17,8 +17,6 @@ export const fetchMealById = createAsyncThunk("fetchMealById", async (id) => {
   return response.json();
 });
 
-
-
 const initialState = {
   meal: [],
   isLoading: false,
